@@ -6,7 +6,24 @@
         xmlns:local="clr-namespace:MVVNTest"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Save"
+                        Executed="SaveData"/>
+    </Window.CommandBindings>
+    
+    <StackPanel>
+        <ComboBox x:Name="ClientsModifyComboBox" ItemsSource="{Binding Clients}" DisplayMemberPath="id" 
+                  SelectedItem="{Binding ClientsModifyComboBoxSelectedItem}"
+                  />
+
+        <TextBlock>Identidicador</TextBlock>
+        <TextBox Margin="0,0,0,5" Text="{Binding ClientsModifyComboBoxSelectedItem.id}"/>
+        <TextBlock>Nombre</TextBlock>
+        <TextBox Margin="0,0,0,5" Text="{Binding ClientsModifyComboBoxSelectedItem.nombre}"/>
+        <TextBlock>Apellido</TextBlock>
+        <TextBox Margin="0,0,0,5" Text="{Binding ClientsModifyComboBoxSelectedItem.apellido}"/>
+
+        <Button Content="Modificar" Command="ApplicationCommands.Save"/>
+    </StackPanel>
 </Window>

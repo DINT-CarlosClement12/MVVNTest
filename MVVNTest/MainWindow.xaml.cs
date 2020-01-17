@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +21,19 @@ namespace MVVNTest
     /// </summary>
     public partial class MainWindow : Window
     {
+
         public MainWindow()
         {
             InitializeComponent();
+
+            DataContext = new MainWindowVM();
+            ((MainWindowVM)DataContext).InitializeVM();
         }
+
+        private void SaveData(object sender, RoutedEventArgs e)
+        {
+            ((MainWindowVM)DataContext).SaveData(sender, e);
+        }
+
     }
 }
